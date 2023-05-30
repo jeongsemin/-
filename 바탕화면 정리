@@ -1,0 +1,21 @@
+코딩테스트를 준비하는 머쓱이는 프로그래머스에서 문제를 풀고 나중에 다시 코드를 보면서 공부하려고 작성한 코드를 컴퓨터 바탕화면에 아무 위치에나 저장해 둡니다. 
+저장한 코드가 많아지면서 머쓱이는 본인의 컴퓨터 바탕화면이 너무 지저분하다고 생각했습니다. 
+프로그래머스에서 작성했던 코드는 그 문제에 가서 다시 볼 수 있기 때문에 저장해 둔 파일들을 전부 삭제하기로 했습니다.
+
+간단히 생각하자면 각 좌표에서 위, 아래, 오른쪽, 왼쪽 좌표 값중 가장 큰것과 작은 것을 찾으면 되는 문제이다.
+
+function solution(wallpaper) {
+    var answer = [];
+    let [top,bottom,left,right] = [51,0,51,0];
+
+    for(let i=0;i<wallpaper.length;i++){
+        for(let j=0;j<wallpaper[0].length;j++){
+            if(wallpaper[i][j] === ".") continue;
+            top = Math.min(top,i);
+            bottom = Math.max(bottom,i);
+            left = Math.min(left,j);
+            right = Math.max(right,j);
+        }
+    }
+    return [top,left,bottom+1,right+1];
+}
