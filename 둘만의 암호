@@ -1,0 +1,14 @@
+function solution(strings, skip, index) {
+  let answer = '';
+  const string = new Set('abcdefghijklmnopqrstuvwxyz');
+  [...skip].forEach(element => string.delete(element));
+
+  const arr = [...string];
+
+  for (const s of strings) {
+    const indexs = arr.indexOf(s) + index;
+    answer += arr[indexs % arr.length];
+  }
+
+  return answer;
+}
